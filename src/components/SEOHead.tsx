@@ -36,15 +36,21 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ activePage, selectedCountryId 
       link.setAttribute('href', url);
     };
 
-    // 3. Update Standard Meta Tags
+    // 3. Update Standard Meta Tags & Directives
     setMetaTag('name', 'description', seoData.description);
     setMetaTag('name', 'keywords', seoData.keywords);
+    setMetaTag('name', 'robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
     setCanonical(seoData.canonicalUrl);
 
-    // 4. Update OpenGraph Tags
+    // 4. Update OpenGraph & Twitter Tags
     setMetaTag('property', 'og:title', seoData.title);
     setMetaTag('property', 'og:description', seoData.description);
     setMetaTag('property', 'og:url', seoData.canonicalUrl);
+    setMetaTag('property', 'og:site_name', 'JSR World Visas');
+    setMetaTag('property', 'og:type', 'website');
+    setMetaTag('name', 'twitter:card', 'summary_large_image');
+    setMetaTag('name', 'twitter:title', seoData.title);
+    setMetaTag('name', 'twitter:description', seoData.description);
 
     // 5. Update Dynamic JSON-LD Structured Data Script
     const SCRIPT_ID = 'dynamic-seo-jsonld';

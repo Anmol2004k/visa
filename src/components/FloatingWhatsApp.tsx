@@ -5,22 +5,22 @@ import { RemixIcon } from './RemixIcon';
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userQuery, setUserQuery] = useState('');
-  const [selectedTopic, setSelectedTopic] = useState('University Admissions');
+  const [selectedTopic, setSelectedTopic] = useState('Visa Application Support');
 
   const topics = [
-    'University Admissions',
-    'Visa File Preparation',
-    'Sonipat Office Appointment',
-    'US / UK Intake 2025/2026',
-    'Other Inquiries',
+    'Visa Application Support',
+    'Tourist & Visitor Visas',
+    'Student & Education Visas',
+    'Partner & Family Visas',
+    'Work & Migration Inquiries',
   ];
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanQuery = userQuery.trim() || 'I would like to speak with a counselor regarding study abroad.';
-    const fullText = `Hello Instant Visa Sonipat! [Topic: ${selectedTopic}]\n${cleanQuery}\n(Sent from Instant Visa Sonipat Website)`;
+    const cleanQuery = userQuery.trim() || 'I would like to speak with a visa specialist regarding visa application support.';
+    const fullText = `Hello ${COMPANY_CONFIG.name}! [Topic: ${selectedTopic}]\n${cleanQuery}\n(Sent from ${COMPANY_CONFIG.name} Website)`;
     const whatsappUrl = `https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${encodeURIComponent(fullText)}`;
-    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    window.location.href = whatsappUrl;
     setIsOpen(false);
     setUserQuery('');
   };
@@ -34,16 +34,16 @@ export const FloatingWhatsApp: React.FC = () => {
           <div className="bg-emerald-600 text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-white text-lg">
-                  IV
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center font-bold text-white text-sm">
+                  JSR
                 </div>
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-300 border-2 border-emerald-600 rounded-full"></span>
               </div>
               <div>
-                <p className="font-bold text-sm leading-tight">Instant Visa Sonipat</p>
+                <p className="font-bold text-sm leading-tight">{COMPANY_CONFIG.name}</p>
                 <p className="text-xs text-emerald-100 flex items-center gap-1">
                   <RemixIcon name="ri-checkbox-circle-fill" className="text-xs text-emerald-200" />
-                  <span>Online Desk Counselor</span>
+                  <span>Online Visa Desk</span>
                 </p>
               </div>
             </div>
@@ -60,10 +60,10 @@ export const FloatingWhatsApp: React.FC = () => {
           <div className="p-4 bg-slate-50 text-xs text-slate-600 space-y-3">
             <div className="bg-white p-3 rounded-xl rounded-tl-none border border-slate-200 shadow-xs space-y-1">
               <p className="text-slate-800 font-medium">
-                Namaste! How can our Sonipat counselor guide your study abroad journey today?
+                Namaste &amp; Hello! How can our visa specialist team guide your application today?
               </p>
               <p className="text-[10px] text-slate-400">
-                Typically responds in a few minutes during office hours (9:30 AM – 6:30 PM).
+                Typically responds in a few minutes during business hours.
               </p>
             </div>
 
@@ -93,7 +93,7 @@ export const FloatingWhatsApp: React.FC = () => {
               <textarea
                 value={userQuery}
                 onChange={(e) => setUserQuery(e.target.value)}
-                placeholder="Type your question or preferred country (e.g., 'Looking for UK Sep 2025 intake')..."
+                placeholder="Type your inquiry or preferred destination..."
                 rows={2}
                 className="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-900 placeholder:text-slate-400 resize-none"
               />
@@ -112,10 +112,10 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Chat on WhatsApp with Sonipat Counselor"
+        aria-label={`Chat on WhatsApp with ${COMPANY_CONFIG.name}`}
         className="group relative flex items-center justify-center w-14 h-14 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-emerald-300"
       >
-        <span className="sr-only">Chat with Instant Visa Sonipat on WhatsApp</span>
+        <span className="sr-only">Chat with {COMPANY_CONFIG.name} on WhatsApp</span>
         {/* Pulsing indicator */}
         <span className="absolute -top-1 -right-1 flex h-4 w-4">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>

@@ -1,4 +1,14 @@
-export type PageId = 'home' | 'about' | 'work' | 'contact';
+export type PageId =
+  | 'home'
+  | 'about'
+  | 'work'
+  | 'contact'
+  | 'privacy'
+  | 'terms'
+  | 'cookies'
+  | 'disclaimer'
+  | 'security'
+  | 'sitemap';
 
 export interface CountryInfo {
   id: string;

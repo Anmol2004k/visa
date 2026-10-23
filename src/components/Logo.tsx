@@ -26,7 +26,7 @@ const DEFAULT_LOGO_CANDIDATES = [
 
 export const Logo: React.FC<LogoProps> = ({
   theme = 'light',
-  size = 'lg',
+  size = 'md',
   className = '',
   imgClassName = '',
   showTextAlways = true,
@@ -60,35 +60,35 @@ export const Logo: React.FC<LogoProps> = ({
 
   const isDark = theme === 'dark';
 
-  // Dimension presets to ensure crisp, highly visible emblem display
+  // Dimension presets for balanced, elegant, and compact corporate display
   const sizeConfig = {
     sm: {
       img: 'h-10 w-10 sm:h-11 sm:w-11',
-      badge: 'w-10 h-10',
+      badge: 'w-10 h-10 sm:w-11 sm:h-11',
       iconText: 'text-lg',
-      nameText: 'text-sm sm:text-base',
-      taglineText: 'text-[9px]',
+      nameText: 'text-sm sm:text-base font-bold tracking-tight',
+      taglineText: 'text-[9px] sm:text-[10px] tracking-wider',
     },
     md: {
-      img: 'h-12 w-12 sm:h-14 sm:w-14',
-      badge: 'w-12 h-12',
+      img: 'h-11 w-11 sm:h-12 sm:w-12',
+      badge: 'w-11 h-11 sm:w-12 sm:h-12',
       iconText: 'text-xl',
-      nameText: 'text-base sm:text-lg',
-      taglineText: 'text-[10px]',
+      nameText: 'text-base sm:text-lg font-bold tracking-tight',
+      taglineText: 'text-[10px] sm:text-[11px] tracking-wider',
     },
     lg: {
-      img: 'h-14 w-14 sm:h-16 sm:w-16 md:h-17 md:w-17',
+      img: 'h-14 w-14 sm:h-16 sm:w-16',
       badge: 'w-14 h-14 sm:w-16 sm:h-16',
       iconText: 'text-2xl',
-      nameText: 'text-lg sm:text-xl font-extrabold',
-      taglineText: 'text-[11px] sm:text-xs',
+      nameText: 'text-lg sm:text-xl font-bold tracking-tight',
+      taglineText: 'text-xs tracking-wider',
     },
     xl: {
       img: 'h-20 w-20 sm:h-24 sm:w-24',
       badge: 'w-20 h-20 sm:w-24 sm:h-24',
       iconText: 'text-3xl',
-      nameText: 'text-xl sm:text-2xl font-black',
-      taglineText: 'text-xs sm:text-sm',
+      nameText: 'text-xl sm:text-2xl font-black tracking-tight',
+      taglineText: 'text-xs sm:text-sm tracking-wide',
     },
   }[size];
 

@@ -47,6 +47,34 @@ export const COMPANY_CONFIG = {
   // Mandatory Regulatory Disclaimer
   disclaimer:
     'Regulatory Notice: Visa eligibility and decisions remain subject to the laws and assessment procedures of the relevant government authority. Where immigration advice or legal representation is regulated, that advice or representation will be provided only by appropriately authorised professionals. JSR World Visas provides structured application support and does not guarantee visa outcomes.',
+
+  // Centralized Experience & Impact Statistics (Configurable & Verified)
+  impactStats: [
+    {
+      value: '2+',
+      label: 'Years of Experience',
+      description: 'Supporting international journeys from Australia & India desks',
+      icon: 'ri-calendar-check-line',
+    },
+    {
+      value: '500+',
+      label: 'Consultations Assisted',
+      description: 'Verified guidance delivered for clients and students',
+      icon: 'ri-user-heart-line',
+    },
+    {
+      value: '63+',
+      label: 'Destinations Supported',
+      description: 'Documentary assistance across 7 major world regions',
+      icon: 'ri-earth-line',
+    },
+    {
+      value: '11',
+      label: 'Structured Pathways',
+      description: 'Comprehensive coverage from visitor to permanent residency',
+      icon: 'ri-shield-check-line',
+    },
+  ],
 };
 
 export const COUNTRIES_DATA: CountryInfo[] = [

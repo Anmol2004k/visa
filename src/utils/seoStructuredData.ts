@@ -13,7 +13,7 @@ export function getDynamicSeoData(
   activePage: PageId,
   selectedCountryId?: string
 ): SeoMetadata {
-  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://instantvisasonipat.com';
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://jsrworldvisas.com';
   const currentPath = activePage === 'home' ? '' : `/${activePage}`;
   const canonicalUrl = `${origin}${currentPath}`;
   
@@ -206,8 +206,50 @@ export function getDynamicSeoData(
     breadcrumbItems.push({
       '@type': 'ListItem',
       position: 2,
-      name: 'Contact JSR World Visas - Head Office Sonipat & Melbourne Branch',
+      name: 'Contact JSR World Visas - Head Office Melbourne & Kundli Branch',
       item: `${origin}/contact`
+    });
+  } else if (activePage === 'privacy') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Privacy Policy | JSR World Visas',
+      item: `${origin}/privacy`
+    });
+  } else if (activePage === 'terms') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Terms & Conditions | JSR World Visas',
+      item: `${origin}/terms`
+    });
+  } else if (activePage === 'cookies') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Cookie Policy | JSR World Visas',
+      item: `${origin}/cookies`
+    });
+  } else if (activePage === 'disclaimer') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Visa Disclaimer & Regulatory Notice | JSR World Visas',
+      item: `${origin}/disclaimer`
+    });
+  } else if (activePage === 'security') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Security & Data Protection | JSR World Visas',
+      item: `${origin}/security`
+    });
+  } else if (activePage === 'sitemap') {
+    breadcrumbItems.push({
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Website Sitemap | JSR World Visas',
+      item: `${origin}/sitemap`
     });
   }
 
@@ -340,25 +382,58 @@ export function getDynamicSeoData(
     ]
   };
 
-  // Build page-specific meta title and description targeting 'Overseas Education Consultant in Sonipat'
-  let title = 'Instant Visa Sonipat | Overseas Education Consultant in Sonipat';
+  // Build page-specific meta title and description with JSR WORLD VISAS branding
+  let title = 'JSR World Visas | Worldwide Visa & Overseas Education Consultancy';
   let description =
-    'Looking for the best Overseas Education Consultant in Sonipat? Instant Visa Sonipat provides genuine university admissions & student visa counseling for USA, UK, Canada, Australia & Germany.';
-  const keywords =
-    'Overseas Education Consultant in Sonipat, Study Abroad Consultant Sonipat, Student Visa Consultant Sonipat, Study in USA Sonipat, Study in UK Sonipat, Study in Canada Sonipat, Best Visa Agent Model Town Sonipat, Instant Visa Sonipat';
+    'JSR World Visas: Your Journey. Our Guidance. Head office in Melbourne, Australia and branch in Kundli, Sonipat, Haryana. Comprehensive application support across 11 key visa categories.';
+  let keywords =
+    'JSR World Visas, Worldwide Visa Services, Overseas Education Consultant, Melbourne Australia, Kundli Sonipat, Student Visa, Work Visa, Partner Visa, Skilled Migration';
 
   if (activePage === 'about') {
     title = 'About Us | JSR World Visas - Worldwide Visa Application Support';
     description =
       'Discover JSR World Visas: Your partner for worldwide visa application support. Head office in Kundli, District Sonipat, Haryana & branch in Melbourne, Australia. Coordinated by Australia-based specialist team.';
+    keywords = 'About JSR World Visas, Melbourne Visa Team, Kundli Sonipat Branch Office, Visa Consultancy Credentials';
   } else if (activePage === 'work') {
     title = 'Services Offered | JSR World Visas - Worldwide Visa Application Support';
     description =
       'Worldwide visa application support across 11 key service pathways: Tourist & Visitor, Student, Work, Family, Skilled Migration, Business & Talent Visas. Coordinated by Australia-based specialist team.';
+    keywords = 'Visa Services, Tourist Visa, Student Visa, Work Visa, Skilled Migration, Partner Visa, Business Visa, 63 Countries We Serve';
   } else if (activePage === 'contact') {
-    title = "Contact JSR World Visas | Melbourne Head Office & Kundli Sonipat Branch";
+    title = 'Contact JSR World Visas | Melbourne Head Office & Kundli Sonipat Branch';
     description =
       'Contact JSR World Visas: Head office at 60 Corrigan Ave, Brooklyn, Melbourne 3012 (+61 4300 53716) and branch at Shop 1, Rodeo Drive, Kundli 131029 (+91 98107 55659).';
+    keywords = 'Contact JSR World Visas, Melbourne Office, Kundli Sonipat Office, WhatsApp Visa Helpline, Consultation Booking';
+  } else if (activePage === 'privacy') {
+    title = 'Privacy Policy | JSR World Visas - Data Privacy & Client Protection';
+    description =
+      'Read the JSR World Visas Privacy Policy. Understand how we collect, store, and safeguard personal information across our Melbourne and Kundli counseling centers.';
+    keywords = 'JSR World Visas Privacy Policy, Client Data Protection, Confidentiality, Information Handling';
+  } else if (activePage === 'terms') {
+    title = 'Terms & Conditions | JSR World Visas - Client Engagement Agreement';
+    description =
+      'Review the terms of service governing JSR World Visas application guidance, regulatory disclosures, and zero fraudulent document policy.';
+    keywords = 'JSR World Visas Terms and Conditions, Consultancy Agreement, Visa Disclaimer, Client Terms';
+  } else if (activePage === 'cookies') {
+    title = 'Cookie Policy | JSR World Visas - Transparency & Browser Storage';
+    description =
+      'Learn about technical cookies and local storage utilized on jsrworldvisas.com. We do not deploy invasive cross-site advertising trackers.';
+    keywords = 'Cookie Policy, Local Storage, Browser Privacy, JSR World Visas Cookies';
+  } else if (activePage === 'disclaimer') {
+    title = 'Visa Disclaimer & Regulatory Notice | JSR World Visas';
+    description =
+      'Mandatory regulatory disclosure: JSR World Visas is an independent consultancy. Final visa approval authority rests exclusively with sovereign immigration departments.';
+    keywords = 'Visa Disclaimer, Regulatory Disclosure, Immigration Authority Decisions, Independent Visa Consultancy';
+  } else if (activePage === 'security') {
+    title = 'Security & Data Protection | JSR World Visas';
+    description =
+      'Explore technical and operational security controls deployed at JSR World Visas to safeguard client identity documents, credentials, and dossiers.';
+    keywords = 'Document Security, Data Protection, Anti-Fraud Measures, TLS Encryption, JSR World Visas Safety';
+  } else if (activePage === 'sitemap') {
+    title = 'Website Sitemap | JSR World Visas - All Pages & Destination Galleries';
+    description =
+      'Human-readable directory of all public pages, 11 visa service pathways, 63 destination guides, and official regulatory policies on jsrworldvisas.com.';
+    keywords = 'JSR World Visas Sitemap, Website Directory, All Pages, HTML Sitemap';
   }
 
   return {

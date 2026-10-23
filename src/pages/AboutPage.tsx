@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../types';
 import { COMPANY_CONFIG } from '../data/config';
 import { RemixIcon } from "../components/RemixIcon";
+import { CountryFlag } from '../components/CountryFlag';
 
 interface AboutPageProps {
   onNavigate: (page: PageId) => void;
@@ -54,9 +55,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
     },
     {
       title: 'Two-Country Presence',
-      desc: 'Our head office in India and branch office in Australia support our international service operations.',
+      desc: 'Our head office in Australia and branch office in India support our international service operations.',
       icon: 'ri-building-2-line',
-      tag: 'India & Australia',
+      tag: 'Australia & India',
       color: 'rose'
     }
   ];
@@ -125,9 +126,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
 
               {/* Registered Presence Badge: Kundli (Sonipat) & Melbourne (Australia) */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 text-xl font-bold">
-                    🇮🇳
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-3">
+                  <div className="shrink-0 flex items-center justify-center">
+                    <CountryFlag code="in" countryName="India" size="md" />
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-orange-300 block">
@@ -139,9 +140,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 text-xl font-bold">
-                    🇦🇺
+                <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xs flex items-center gap-3">
+                  <div className="shrink-0 flex items-center justify-center">
+                    <CountryFlag code="au" countryName="Australia" size="md" />
                   </div>
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-wider text-blue-300 block">
@@ -215,7 +216,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate, onOpenConsulta
               We understand that every applicant has a different purpose for travelling. Whether you are planning a family holiday, pursuing higher education, seeking employment opportunities, joining your partner or family overseas, or exploring international business opportunities, our team aims to help you understand the relevant application process.
             </p>
 
-            <div className="p-5 rounded-2xl bg-slate-50 border-l-4 border-blue-600 border border-slate-200 text-slate-700 text-sm font-medium">
+            <div className="p-5 rounded-2xl bg-blue-50/70 border-l-4 border-l-blue-600 border border-blue-200/80 text-slate-800 text-sm font-medium">
               We believe in <strong className="text-slate-900">clear communication</strong>, <strong className="text-slate-900">attention to detail</strong>, <strong className="text-slate-900">responsible guidance</strong> and a <strong className="text-slate-900">client-focused approach</strong>.
             </div>
           </div>
