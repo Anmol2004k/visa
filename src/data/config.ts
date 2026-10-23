@@ -7,26 +7,37 @@ import {
 } from '../types';
 
 export const COMPANY_CONFIG = {
-  name: 'Instant Visa Sonipat',
-  legalName: 'Instant Visa Overseas Education & Immigration Consultancy Pvt. Ltd.',
-  tagline: 'Your Journey Abroad Starts With the Right Guidance.',
-  subTagline: 'Expert overseas education & student visa counseling in Sonipat for top global universities.',
+  name: 'JSR World Visas',
+  legalName: 'JSR World Visas',
+  tagline: 'Your Journey. Our Guidance.',
+  subTagline: 'Worldwide visa application support coordinated by our specialist team based in Australia.',
+  logoImage: '/images/logo.jpeg',
   
   // Direct Action contact details
-  phone: '+91 98120 44555',
-  phoneRaw: '+919812044555',
-  email: 'admissions@instantvisasonipat.com',
+  phone: '+91 98107 55659',
+  phoneRaw: '+919810755659',
+  australiaPhone: '+61 4300 53716',
+  australiaPhoneRaw: '+61430053716',
+  indiaPhone: '+91 98107 55659',
+  indiaPhoneRaw: '+919810755659',
+  email: 'info@jsrworldvisas.com',
   
   // WhatsApp config
-  whatsappNumber: '+919812044555',
-  whatsappDisplay: '+91 98120 44555',
-  whatsappPrefillText: 'Hello Instant Visa Sonipat! I want to get a free counseling session for studying abroad.',
+  whatsappNumber: '919810755659',
+  whatsappDisplay: '+91 98107 55659',
+  whatsappPrefillText: 'Hello JSR World Visas! I would like to inquire about visa application support.',
   
-  // Sonipat physical office
-  locationCity: 'Model Town, Sonipat',
-  officeAddress: 'SCO 42, 1st Floor, Near Subhash Chowk, Model Town Road, Sonipat, Haryana 131001',
-  landmarkNote: 'Near Subhash Chowk, 5 mins from Sonipat Railway Station',
-  workingHours: 'Mon – Sat: 9:30 AM – 6:30 PM',
+  // Physical offices
+  headOfficeTitle: 'Head Office (Australia)',
+  headOfficeAddress: '60 Corrigan Avenue, Brooklyn, Melbourne 3012 (Victoria) Australia',
+  officeAddress: '60 Corrigan Avenue, Brooklyn, Melbourne 3012 (Victoria) Australia',
+  australiaOfficeAddress: '60 Corrigan Avenue, Brooklyn, Melbourne 3012 (Victoria) Australia',
+  branchOfficeTitle: 'Branch Office (India)',
+  branchOfficeAddress: 'Shop 1, c/o Mukhija Associates, Rodeo Drive, Kundli 131029 (Haryana) India',
+  indiaOfficeAddress: 'Shop 1, c/o Mukhija Associates, Rodeo Drive, Kundli 131029 (Haryana) India',
+  locationCity: 'Melbourne, Australia (Head Office) / Kundli, Sonipat, India (Branch Office)',
+  landmarkNote: 'Head Office: 60 Corrigan Ave, Brooklyn, Melbourne 3012 | Branch Office: Shop 1, Rodeo Drive, Kundli 131029',
+  workingHours: 'Mon – Sat: 9:30 AM – 6:30 PM (IST) & Australian Business Hours (AEST)',
   
   // High-res visual assets
   heroImage: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80',
@@ -35,7 +46,7 @@ export const COMPANY_CONFIG = {
 
   // Mandatory Regulatory Disclaimer
   disclaimer:
-    'Regulatory Notice: Visa approvals and university admission offers are decided solely by the respective foreign government embassies and university boards. Instant Visa Sonipat provides genuine guidance and does not guarantee visa outcomes.',
+    'Regulatory Notice: Visa eligibility and decisions remain subject to the laws and assessment procedures of the relevant government authority. Where immigration advice or legal representation is regulated, that advice or representation will be provided only by appropriately authorised professionals. JSR World Visas provides structured application support and does not guarantee visa outcomes.',
 };
 
 export const COUNTRIES_DATA: CountryInfo[] = [

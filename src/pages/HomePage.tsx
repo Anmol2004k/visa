@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageId } from '../types';
 import { 
   COMPANY_CONFIG, 
@@ -10,26 +10,7 @@ import {
 } from '../data/config';
 import { CountryCard } from '../components/CountryCard';
 import { ShortEnquiryForm } from '../components/ShortEnquiryForm';
-import { 
-  Phone, 
-  MessageCircle, 
-  ArrowRight, 
-  Sparkles, 
-  GraduationCap, 
-  ShieldCheck, 
-  Compass, 
-  FileText, 
-  CheckCircle2, 
-  Shield, 
-  MapPin, 
-  Building, 
-  Users,
-  Send,
-  FileCheck,
-  Plane,
-  Star,
-  Clock
-} from 'lucide-react';
+import { RemixIcon } from "../components/RemixIcon";
 
 interface HomePageProps {
   onNavigate: (page: PageId) => void;
@@ -42,45 +23,69 @@ export const HomePage: React.FC<HomePageProps> = ({
   onOpenConsultation,
   onSelectCountry,
 }) => {
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+
+  const faqItems = [
+    {
+      q: 'Who is the leading overseas education consultant in Sonipat?',
+      a: 'Instant Visa Sonipat, conveniently situated in Model Town near Subhash Chowk, is recognized as a premier overseas education and student visa consultancy in Sonipat. We provide genuine university shortlisting, financial documentation, and visa filing with zero false promises.'
+    },
+    {
+      q: 'Where is Instant Visa located in Sonipat?',
+      a: 'Our registered counseling branch is located at SCO 42, 1st Floor, Near Subhash Chowk, Model Town Road, Sonipat, Haryana 131001 — just 5 minutes from the Sonipat Railway Station.'
+    },
+    {
+      q: 'Which countries can I apply to through Instant Visa Sonipat?',
+      a: 'We handle end-to-end undergraduate and postgraduate admissions for the USA (F-1 visa), United Kingdom (Student Route), Canada (Study Permit), Australia (Subclass 500), Germany (APS & National Visa), and New Zealand.'
+    },
+    {
+      q: 'Does Instant Visa Sonipat charge for initial profile evaluation?',
+      a: 'No. Initial profile assessment, eligibility check, and university recommendations are 100% free of charge. You can walk into our Sonipat office or contact us on WhatsApp at +91 98107 55659.'
+    },
+    {
+      q: 'What services are provided for student visa applicants?',
+      a: 'Our services include university selection, SOP and LOR writing assistance, international scholarship applications, educational loan guidance, Embassy visa file compilation, and one-on-one mock interview sessions.'
+    }
+  ];
   // Helper to render dynamic lucide icon by name
   const renderServiceIcon = (iconName: string) => {
     switch (iconName) {
       case 'GraduationCap':
-        return <GraduationCap className="w-6 h-6 text-blue-600" />;
+        return <RemixIcon name="ri-graduation-cap-fill" className="text-2xl text-blue-600" />;
       case 'ShieldCheck':
-        return <ShieldCheck className="w-6 h-6 text-blue-600" />;
+        return <RemixIcon name="ri-shield-check-fill" className="text-2xl text-blue-600" />;
       case 'Compass':
-        return <Compass className="w-6 h-6 text-blue-600" />;
+        return <RemixIcon name="ri-compass-3-line" className="text-2xl text-blue-600" />;
       case 'FileText':
-        return <FileText className="w-6 h-6 text-blue-600" />;
+        return <RemixIcon name="ri-file-text-line" className="text-2xl text-blue-600" />;
       default:
-        return <CheckCircle2 className="w-6 h-6 text-blue-600" />;
+        return <RemixIcon name="ri-checkbox-circle-fill" className="text-2xl text-blue-600" />;
     }
   };
 
   const renderTrustIcon = (iconName: string) => {
     switch (iconName) {
       case 'Shield':
-        return <Shield className="w-6 h-6 text-emerald-600" />;
+        return <RemixIcon name="ri-shield-check-fill" className="text-2xl text-emerald-600" />;
       case 'MapPin':
-        return <MapPin className="w-6 h-6 text-emerald-600" />;
+        return <RemixIcon name="ri-map-pin-2-fill" className="text-2xl text-emerald-600" />;
       case 'Building':
-        return <Building className="w-6 h-6 text-emerald-600" />;
+        return <RemixIcon name="ri-building-line" className="text-2xl text-emerald-600" />;
       default:
-        return <Users className="w-6 h-6 text-emerald-600" />;
+        return <RemixIcon name="ri-group-line" className="text-2xl text-emerald-600" />;
     }
   };
 
   const renderProcessIcon = (iconName: string) => {
     switch (iconName) {
       case 'Compass':
-        return <Compass className="w-5 h-5 text-white" />;
+        return <RemixIcon name="ri-compass-3-line" className="text-xl text-white" />;
       case 'Send':
-        return <Send className="w-5 h-5 text-white" />;
+        return <RemixIcon name="ri-send-plane-fill" className="text-xl text-white" />;
       case 'FileCheck':
-        return <FileCheck className="w-5 h-5 text-white" />;
+        return <RemixIcon name="ri-file-check-line" className="text-xl text-white" />;
       default:
-        return <Plane className="w-5 h-5 text-white" />;
+        return <RemixIcon name="ri-flight-takeoff-line" className="text-xl text-white" />;
     }
   };
 
@@ -118,9 +123,9 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onClick={() => onOpenConsultation()}
                   className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-blue-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer group"
                 >
-                  <Sparkles className="w-5 h-5 text-amber-300" />
+                  <RemixIcon name="ri-sparkling-fill" className="text-amber-300 text-lg" />
                   <span>Get Free Consultation</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <RemixIcon name="ri-arrow-right-line" className="text-base group-hover:translate-x-1 transition-transform" />
                 </button>
 
                 <a
@@ -129,7 +134,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   rel="noopener noreferrer"
                   className="w-full sm:w-auto px-7 py-4 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm sm:text-base shadow-lg shadow-emerald-600/25 transition-all flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
+                  <RemixIcon name="ri-whatsapp-fill" className="text-xl" />
                   <span>WhatsApp Us</span>
                 </a>
               </div>
@@ -137,15 +142,15 @@ export const HomePage: React.FC<HomePageProps> = ({
               {/* Fast Trust Indicators */}
               <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-slate-500 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <RemixIcon name="ri-checkbox-circle-fill" className="text-emerald-600 text-base shrink-0" />
                   <span>Zero Fake Documents Policy</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <RemixIcon name="ri-checkbox-circle-fill" className="text-emerald-600 text-base shrink-0" />
                   <span>In-Person Desk in Model Town</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <RemixIcon name="ri-checkbox-circle-fill" className="text-emerald-600 text-base shrink-0" />
                   <span>Direct University Processing</span>
                 </div>
               </div>
@@ -166,7 +171,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <div className="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-100 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
-                      <GraduationCap className="w-5 h-5" />
+                      <RemixIcon name="ri-graduation-cap-fill" className="text-xl" />
                     </div>
                     <div>
                       <span className="block font-bold text-xs text-slate-900">
@@ -183,7 +188,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                     className="p-2.5 rounded-xl bg-emerald-50 text-emerald-700 hover:bg-emerald-100 transition-colors"
                     title="Call Desk"
                   >
-                    <Phone className="w-4 h-4" />
+                    <RemixIcon name="ri-phone-fill" className="text-base" />
                   </a>
                 </div>
               </div>
@@ -416,7 +421,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               href={`tel:${COMPANY_CONFIG.phoneRaw}`}
               className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4 text-emerald-600" />
+              <RemixIcon name="ri-phone-fill" className="text-emerald-600 text-base" />
               <span>Call Now</span>
             </a>
 
@@ -426,14 +431,61 @@ export const HomePage: React.FC<HomePageProps> = ({
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2"
             >
-              <MessageCircle className="w-4 h-4" />
+              <RemixIcon name="ri-whatsapp-fill" className="text-base" />
               <span>WhatsApp Us</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 8. SHORT ENQUIRY FORM */}
+      {/* 8. FAQ SECTION: Focused on 'Overseas Education Consultant in Sonipat' */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-3 mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider">
+            <RemixIcon name="ri-question-answer-line" className="text-sm text-blue-600" />
+            <span>Search & FAQ</span>
+          </div>
+          <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto">
+            Guidance for students searching for the most dependable overseas education consultant in Sonipat.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {faqItems.map((item, index) => {
+            const isOpen = openFaqIndex === index;
+            return (
+              <div
+                key={index}
+                className="border border-slate-200 rounded-2xl bg-white overflow-hidden transition-all shadow-xs"
+              >
+                <button
+                  onClick={() => setOpenFaqIndex(isOpen ? null : index)}
+                  className="w-full text-left px-5 sm:px-6 py-4 flex items-center justify-between gap-4 cursor-pointer hover:bg-slate-50 transition-colors"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-heading font-bold text-xs sm:text-sm text-slate-900">
+                    {item.q}
+                  </span>
+                  <RemixIcon
+                    name={isOpen ? "ri-arrow-up-s-line" : "ri-arrow-down-s-line"}
+                    className="text-slate-500 text-xl transition-transform shrink-0"
+                  />
+                </button>
+                {isOpen && (
+                  <div className="px-5 sm:px-6 pb-4 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50/60">
+                    {item.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* 9. SHORT ENQUIRY FORM */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto space-y-2 mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-blue-600 block">

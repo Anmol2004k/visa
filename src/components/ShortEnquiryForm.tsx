@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COMPANY_CONFIG } from '../data/config';
-import { Send, CheckCircle2, MessageSquare, Phone } from 'lucide-react';
+import { RemixIcon } from './RemixIcon';
 
 interface ShortEnquiryFormProps {
   title?: string;
@@ -51,7 +51,7 @@ export const ShortEnquiryForm: React.FC<ShortEnquiryFormProps> = ({
     return (
       <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-xl text-center space-y-4 max-w-lg mx-auto">
         <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-          <CheckCircle2 className="w-9 h-9" />
+          <RemixIcon name="ri-checkbox-circle-fill" className="text-3xl" />
         </div>
         <h3 className="font-heading font-extrabold text-2xl text-slate-900">
           Enquiry Received!
@@ -65,7 +65,7 @@ export const ShortEnquiryForm: React.FC<ShortEnquiryFormProps> = ({
             onClick={handleSendWhatsApp}
             className="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
-            <MessageSquare className="w-4 h-4" />
+            <RemixIcon name="ri-whatsapp-fill" className="text-base" />
             <span>Chat on WhatsApp Now</span>
           </button>
           <button
@@ -168,7 +168,7 @@ export const ShortEnquiryForm: React.FC<ShortEnquiryFormProps> = ({
           type="submit"
           className="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
-          <Send className="w-4 h-4" />
+          <RemixIcon name="ri-send-plane-fill" className="text-base" />
           <span>Send Free Enquiry</span>
         </button>
 

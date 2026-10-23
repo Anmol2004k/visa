@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { COMPANY_CONFIG } from '../data/config';
-import { MessageCircle, X, Send, CheckCircle } from 'lucide-react';
+import { RemixIcon } from './RemixIcon';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +42,7 @@ export const FloatingWhatsApp: React.FC = () => {
               <div>
                 <p className="font-bold text-sm leading-tight">Instant Visa Sonipat</p>
                 <p className="text-xs text-emerald-100 flex items-center gap-1">
-                  <CheckCircle className="w-3 h-3 text-emerald-200" />
+                  <RemixIcon name="ri-checkbox-circle-fill" className="text-xs text-emerald-200" />
                   <span>Online Desk Counselor</span>
                 </p>
               </div>
@@ -52,7 +52,7 @@ export const FloatingWhatsApp: React.FC = () => {
               className="text-white/80 hover:text-white p-1 rounded-full hover:bg-emerald-700/50 transition-colors"
               aria-label="Close WhatsApp chat popup"
             >
-              <X className="w-5 h-5" />
+              <RemixIcon name="ri-close-line" className="text-lg" />
             </button>
           </div>
 
@@ -101,7 +101,7 @@ export const FloatingWhatsApp: React.FC = () => {
                 type="submit"
                 className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg flex items-center justify-center gap-2 shadow-sm transition-colors text-xs"
               >
-                <Send className="w-3.5 h-3.5" />
+                <RemixIcon name="ri-send-plane-fill" className="text-sm" />
                 <span>Open Direct WhatsApp Chat</span>
               </button>
             </form>
@@ -122,7 +122,7 @@ export const FloatingWhatsApp: React.FC = () => {
           <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500 border-2 border-white"></span>
         </span>
         
-        <MessageCircle className="w-7 h-7 text-white fill-current" />
+        <RemixIcon name="ri-whatsapp-fill" className="text-3xl text-white" />
 
         {/* Hover pill on desktop */}
         {!isOpen && (

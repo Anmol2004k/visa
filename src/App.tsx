@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { QuickLeadPopup } from './components/QuickLeadPopup';
+import { SEOHead } from './components/SEOHead';
 
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -49,6 +50,12 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-slate-900 selection:bg-blue-100 selection:text-blue-900">
       
+      {/* Dynamic Head SEO & JSON-LD Structured Data */}
+      <SEOHead
+        activePage={activePage}
+        selectedCountryId={activePage === 'work' ? workSelectedCountry : undefined}
+      />
+
       {/* Persistent Navigation Header */}
       <Header
         activePage={activePage}

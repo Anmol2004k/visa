@@ -1,6 +1,6 @@
 import React from 'react';
 import { CountryInfo } from '../types';
-import { ArrowRight, Clock, Briefcase } from 'lucide-react';
+import { RemixIcon } from './RemixIcon';
 
 interface CountryCardProps {
   country: CountryInfo;
@@ -70,7 +70,7 @@ export const CountryCard: React.FC<CountryCardProps> = ({ country, onSelect, onI
             className="p-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 transition-colors cursor-pointer"
             title={`View ${country.name} details`}
           >
-            <ArrowRight className="w-4 h-4" />
+            <RemixIcon name="ri-arrow-right-line" className="text-base" />
           </button>
         </div>
       </div>

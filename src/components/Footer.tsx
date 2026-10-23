@@ -1,25 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { PageId } from '../types';
 import { COMPANY_CONFIG, COUNTRIES_DATA } from '../data/config';
-import { 
-  GraduationCap, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  MessageCircle, 
-  Clock, 
-  ShieldAlert, 
-  ArrowUpRight, 
-  Sparkles,
-  Compass,
-  CheckCircle2,
-  ExternalLink,
-  Award,
-  ShieldCheck,
-  Building2,
-  FileCheck2,
-  Globe2
-} from 'lucide-react';
+import { RemixIcon } from "./RemixIcon";
+import { Logo } from './Logo';
 
 interface FooterProps {
   onNavigate: (page: PageId) => void;
@@ -28,6 +11,26 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCountry }) => {
   const currentYear = new Date().getFullYear();
+  const [showSchemaModal, setShowSchemaModal] = useState(false);
+  const [schemaText, setSchemaText] = useState('');
+  const [copied, setCopied] = useState(false);
+
+  const handleOpenSchema = () => {
+    const el = document.getElementById('dynamic-seo-jsonld');
+    if (el && el.textContent) {
+      setSchemaText(el.textContent);
+    } else {
+      setSchemaText('// JSON-LD is dynamically injected in document <head>');
+    }
+    setShowSchemaModal(true);
+    setCopied(false);
+  };
+
+  const handleCopySchema = () => {
+    navigator.clipboard.writeText(schemaText);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handlePageClick = (page: PageId) => {
     onNavigate(page);
@@ -41,384 +44,322 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onSelectCountry }) =
   };
 
   return (
-    <footer className="bg-[#080d19] text-slate-300 border-t border-slate-800 relative overflow-hidden">
-      
-      {/* CREATIVE BACKGROUND GLOW & GEOMETRIC ACCENTS */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-600/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/2 right-10 w-72 h-72 bg-emerald-600/5 rounded-full blur-3xl pointer-events-none"></div>
-
-      {/* TOP PRE-FOOTER: CREATIVE SOCIAL PROOF & ADMISSION CALLOUT */}
-      <div className="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* Left: Inspiring Headline & Trust Metrics */}
-            <div className="lg:col-span-7 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                <span>Next Intake Admissions Open: Fall 2025 & Spring 2026</span>
+    <footer className="bg-slate-950 text-slate-400 border-t border-slate-900 selection:bg-blue-600 selection:text-white">
+      {/* TOP BRAND HIGHLIGHT BAR */}
+      <div className="border-b border-slate-900/80">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span className="text-xs uppercase tracking-widest font-semibold text-slate-300">
+                  Australia-Based Specialist Team
+                </span>
+                <span className="text-slate-600">•</span>
+                <span className="text-xs text-slate-400">
+                  Global Visa Support Operations
+                </span>
               </div>
-
-              <h2 className="font-heading font-extrabold text-2xl sm:text-3xl lg:text-4xl text-white tracking-tight leading-snug">
-                Step Confidently into Your International Campus.
-              </h2>
-
-              <p className="text-sm text-slate-400 max-w-xl leading-relaxed">
-                Meet our senior advisors face-to-face at our Sonipat desk. We review academic transcripts, prepare bulletproof visa files, and practice embassy interviews with zero false guarantees.
+              <p className="text-sm text-slate-400 font-light">
+                Registered in India with branch presence in Melbourne, Australia.
               </p>
-
-              {/* Social Proof Trust Badges Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
-                    <Globe2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block font-bold text-white text-xs">6 Countries</span>
-                    <span className="text-[10px] text-slate-500">Official Pathways</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block font-bold text-white text-xs">100% Genuine</span>
-                    <span className="text-[10px] text-slate-500">Zero-Fake Policy</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
-                    <Building2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block font-bold text-white text-xs">Local Desk</span>
-                    <span className="text-[10px] text-slate-500">Model Town, Sonipat</span>
-                  </div>
-                </div>
-
-                <div className="p-3 rounded-xl bg-slate-900/90 border border-slate-800/90 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
-                    <FileCheck2 className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="block font-bold text-white text-xs">Full Visa File</span>
-                    <span className="text-[10px] text-slate-500">Mock Interview Studio</span>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Right: Quick In-Person & WhatsApp Action Card */}
-            <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-950 p-6 rounded-2xl border border-slate-800 shadow-2xl relative overflow-hidden space-y-4">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                  Sonipat Center Hotline
-                </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                  Walk-ins Welcome
-                </span>
-              </div>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={`https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${encodeURIComponent(COMPANY_CONFIG.whatsappPrefillText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/25 text-xs font-medium transition-colors"
+              >
+                <RemixIcon name="ri-whatsapp-line" className="text-sm" />
+                <span>WhatsApp: {COMPANY_CONFIG.whatsappDisplay}</span>
+              </a>
 
-              <div>
-                <p className="font-heading font-bold text-lg text-white">
-                  Speak Directly With a Senior Counselor
-                </p>
-                <p className="text-xs text-slate-400 mt-1">
-                  Have questions regarding your marksheet eligibility or visa rules? Connect with our dedicated Haryana desk team.
-                </p>
-              </div>
+              <a
+                href={`tel:${COMPANY_CONFIG.indiaPhoneRaw}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 text-xs font-medium transition-colors"
+                title="Call India Branch Office"
+              >
+                <RemixIcon name="ri-phone-line" className="text-sm text-emerald-400" />
+                <span>🇮🇳 {COMPANY_CONFIG.indiaPhone}</span>
+              </a>
 
-              <div className="flex flex-col sm:flex-row gap-2.5 pt-1">
+              <a
+                href={`tel:${COMPANY_CONFIG.australiaPhoneRaw}`}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 text-xs font-medium transition-colors"
+                title="Call Australia Head Office"
+              >
+                <RemixIcon name="ri-phone-line" className="text-sm text-blue-400" />
+                <span>🇦🇺 {COMPANY_CONFIG.australiaPhone}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* MAIN MINIMAL NAVIGATION GRID */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Brand Column (4 Cols) */}
+          <div className="lg:col-span-4 space-y-6">
+            <div>
+              <button
+                onClick={() => handlePageClick('home')}
+                className="text-left cursor-pointer focus:outline-none"
+                aria-label="JSR World Visas Home"
+              >
+                <Logo theme="dark" size="xl" />
+              </button>
+
+              <p className="text-xs text-slate-400 leading-relaxed mt-4 max-w-sm">
+                International visa consultancy assisting individuals, families, students, professionals, and businesses with worldwide travel, education, employment, and migration pathways.
+              </p>
+            </div>
+
+            {/* Dual Global Presence */}
+            <div className="space-y-3 pt-2">
+              <div className="border-l border-blue-500/40 pl-3">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                  <span>🇦🇺</span>
+                  <span>Head Office — Australia</span>
+                </div>
+                <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                  60 Corrigan Avenue, Brooklyn, Melbourne 3012 (Victoria) Australia
+                </div>
                 <a
-                  href={`https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${encodeURIComponent(COMPANY_CONFIG.whatsappPrefillText)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-900/40 transition-all flex items-center justify-center gap-2"
+                  href="tel:+61430053716"
+                  className="text-[11px] text-blue-400 hover:text-blue-300 font-semibold block mt-1"
                 >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>WhatsApp Desk</span>
+                  Ph: +61 4300 53716
                 </a>
+              </div>
 
-                <button
-                  onClick={() => handlePageClick('contact')}
-                  className="py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-900/40 transition-all flex items-center justify-center gap-2 cursor-pointer"
+              <div className="border-l border-emerald-500/40 pl-3">
+                <div className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-300">
+                  <span>🇮🇳</span>
+                  <span>Branch Office — India</span>
+                </div>
+                <div className="text-xs text-slate-400 mt-0.5 leading-relaxed">
+                  Shop 1, c/o Mukhija Associates, Rodeo Drive, Kundli 131029 (Haryana) India
+                </div>
+                <a
+                  href="tel:+919810755659"
+                  className="text-[11px] text-emerald-400 hover:text-emerald-300 font-semibold block mt-1"
                 >
-                  <MapPin className="w-4 h-4" />
-                  <span>Sonipat Office Details</span>
-                </button>
+                  Ph: +91 98107 55659
+                </a>
               </div>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-      {/* DESTINATION QUICK SELECTOR PILL TAPE */}
-      <div className="border-b border-slate-800/80 bg-slate-950/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2 shrink-0">
-              <Compass className="w-4 h-4 text-blue-400" />
-              <span>Explore Country Pathways:</span>
-            </span>
-
-            <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 w-full">
-              {COUNTRIES_DATA.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => handleCountryClick(c.id)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-blue-600/20 hover:border-blue-500/50 border border-slate-800 text-xs font-semibold text-slate-300 hover:text-white transition-all flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <span>{c.flagCode}</span>
-                  <span>{c.name}</span>
-                  <ArrowUpRight className="w-3 h-3 text-slate-500 group-hover:text-blue-400 transition-colors" />
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* MAIN STRUCTURED 4-COLUMN FOOTER CONTENT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
-          
-          {/* Col 1: Brand & Regional Leadership (4 cols) */}
-          <div className="lg:col-span-4 space-y-5">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/25">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="font-heading font-extrabold text-xl text-white tracking-tight block">
-                  {COMPANY_CONFIG.name}
-                </span>
-                <span className="text-[11px] text-blue-400 font-bold uppercase tracking-wider block">
-                  Overseas Education & Visas
-                </span>
-              </div>
-            </div>
-
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Sonipat’s premier overseas education consultancy providing ethical university admissions and student visa advisory for the USA, UK, Canada, Australia, New Zealand, and Germany.
-            </p>
-
-            {/* Sonipat Physical Presence Pill */}
-            <div className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 space-y-1 text-xs">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <strong className="text-slate-200">Sonipat Center Location:</strong>
-              </div>
-              <p className="text-slate-400 text-[11px] leading-relaxed pl-5">
-                SCO 42, Model Town Road, Near Subhash Chowk, Sonipat, Haryana 131001.
-              </p>
-            </div>
-
-            {/* Social Proof Credibility Stamp */}
-            <div className="flex items-center gap-2 text-[11px] text-slate-500 pt-1">
-              <Award className="w-4 h-4 text-amber-400 shrink-0" />
-              <span>Zero agent markups • 100% Direct institutional applications</span>
             </div>
           </div>
 
-          {/* Col 2: Quick Navigation (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">
-                Navigation
-              </h4>
-            </div>
-            
-            <ul className="space-y-2.5 text-xs sm:text-sm">
+          {/* Visa Pathways (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200">
+              Visa Pathways
+            </h4>
+            <ul className="space-y-2.5 text-xs">
               <li>
                 <button
-                  onClick={() => handlePageClick('home')}
-                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  onClick={() => handlePageClick('work')}
+                  className="hover:text-white transition-colors cursor-pointer text-left block"
                 >
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Home</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handlePageClick('about')}
-                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
-                >
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-600" />
-                  <span>About Our Desk</span>
+                  Higher Education & Study Visas
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handlePageClick('work')}
-                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer text-left block"
                 >
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Our Work & Guides</span>
+                  Employment & Work Opportunities
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handlePageClick('work')}
+                  className="hover:text-white transition-colors cursor-pointer text-left block"
+                >
+                  Family & Partner Migration
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handlePageClick('work')}
+                  className="hover:text-white transition-colors cursor-pointer text-left block"
+                >
+                  Tourist & Visitor Applications
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handlePageClick('work')}
+                  className="hover:text-white transition-colors cursor-pointer text-left block"
+                >
+                  International Business Visas
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Key Destinations (2 Cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200">
+              Destinations
+            </h4>
+            <ul className="space-y-2.5 text-xs">
+              {COUNTRIES_DATA.map((c) => (
+                <li key={c.id}>
+                  <button
+                    onClick={() => handleCountryClick(c.id)}
+                    className="hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+                  >
+                    <span className="text-[11px] opacity-80">{c.flagCode}</span>
+                    <span>{c.name}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company & Operations (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-200">
+              Organization
+            </h4>
+            <ul className="space-y-2.5 text-xs">
+              <li>
+                <button
+                  onClick={() => handlePageClick('about')}
+                  className="hover:text-white transition-colors cursor-pointer"
+                >
+                  About JSR World Visas
                 </button>
               </li>
               <li>
                 <button
                   onClick={() => handlePageClick('contact')}
-                  className="text-slate-400 hover:text-blue-400 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  <ArrowUpRight className="w-3.5 h-3.5 text-slate-600" />
-                  <span>Contact & Sonipat Office</span>
+                  Contact & Global Offices
                 </button>
               </li>
-            </ul>
-          </div>
-
-          {/* Col 3: Comprehensive Advisory Pillars (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">
-                Advisory Standards
-              </h4>
-            </div>
-
-            <ul className="space-y-2.5 text-xs text-slate-400">
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Strict Zero-Fake-Document Protocol</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Custom SOP & LOR Drafting Reviews</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>US F-1 Visa Embassy Mock Drill Studio</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Germany APS & Blocked Account Setup</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Education Loan Structuring & GIC Kit</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>Transparent Realistic Fee Benchmarks</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Col 4: Contact Touchpoints & Working Hours (3 cols) */}
-          <div className="lg:col-span-3 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-              <h4 className="text-xs font-bold uppercase tracking-widest text-white">
-                Direct Touchpoints
-              </h4>
-            </div>
-
-            <div className="space-y-3 text-xs">
-              <div className="flex items-center gap-2.5 text-slate-300">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`tel:${COMPANY_CONFIG.phoneRaw}`} className="hover:text-white transition-colors font-medium">
-                  {COMPANY_CONFIG.phone}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2.5 text-slate-300">
-                <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a
-                  href={`https://wa.me/${COMPANY_CONFIG.whatsappNumber}?text=${encodeURIComponent(COMPANY_CONFIG.whatsappPrefillText)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors font-medium"
+              <li>
+                <button
+                  onClick={() => handlePageClick('work')}
+                  className="hover:text-white transition-colors cursor-pointer"
                 >
-                  WhatsApp: {COMPANY_CONFIG.whatsappDisplay}
-                </a>
-              </div>
-
-              <div className="flex items-center gap-2.5 text-slate-300">
-                <Mail className="w-4 h-4 text-amber-400 shrink-0" />
-                <a href={`mailto:${COMPANY_CONFIG.email}`} className="hover:text-white transition-colors">
+                  Services Offered
+                </button>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${COMPANY_CONFIG.email}`}
+                  className="hover:text-white transition-colors block"
+                >
                   {COMPANY_CONFIG.email}
                 </a>
-              </div>
-
-              <div className="flex items-center gap-2.5 text-slate-400">
-                <Clock className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>{COMPANY_CONFIG.workingHours}</span>
-              </div>
-            </div>
-
-            <div className="pt-2">
-              <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_CONFIG.officeAddress)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-400 hover:text-blue-300 hover:underline transition-colors"
-              >
-                <span>Open in Google Maps</span>
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
+              </li>
+              <li>
+                <span className="text-slate-500 block">
+                  {COMPANY_CONFIG.workingHours}
+                </span>
+              </li>
+            </ul>
           </div>
 
         </div>
 
-        {/* DISTINCTIVE MANDATORY LEGAL DISCLAIMER CARD */}
-        <div className="mt-12 p-5 rounded-2xl bg-slate-900/90 border border-amber-500/25 text-slate-300 shadow-xl relative overflow-hidden">
-          <div className="flex items-center gap-2 text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">
-            <ShieldAlert className="w-4 h-4 shrink-0 text-amber-400" />
-            <span>Official Regulatory Notice & Ethical Disclosure</span>
-          </div>
-          <p className="text-xs text-slate-400 leading-relaxed">
-            {COMPANY_CONFIG.disclaimer}
+        {/* MINIMAL REGULATORY NOTICE */}
+        <div className="mt-14 pt-8 border-t border-slate-900 text-[11px] leading-relaxed text-slate-500">
+          <p>
+            <strong className="text-slate-400 font-medium">Compliance & Regulatory Notice: </strong>
+            Visa eligibility, processing timelines, and final outcomes are subject solely to the immigration laws, policies, and assessment procedures of the respective government authorities. JSR World Visas provides structured application coordination, document guidance, and support within agreed scopes of service. Where immigration advice or legal representation is regulated by destination country legislation, such advice is provided strictly by appropriately authorised and registered professionals.
           </p>
         </div>
 
-        {/* BOTTOM SIGNATURE & COPYRIGHT BAR */}
-        <div className="mt-10 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div className="text-center sm:text-left">
-            <p>
-              © {currentYear} {COMPANY_CONFIG.name}. All rights reserved.
-            </p>
-            <p className="text-[11px] text-slate-600 mt-0.5">
-              Empowering students and families across Sonipat, Panipat, Rohtak, Murthal, and Delhi-NCR.
-            </p>
+        {/* BOTTOM MINIMAL SIGN-OFF */}
+        <div className="mt-8 pt-6 border-t border-slate-900/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>
+            <span>© {currentYear} JSR World Visas. All rights reserved.</span>
+            <span className="hidden sm:inline mx-2 text-slate-700">|</span>
+            <span className="hidden sm:inline text-slate-600">Kundli, Sonipat (India) & Melbourne (Australia)</span>
           </div>
 
-          <div className="flex items-center gap-3 text-slate-400">
-            <button 
-              onClick={() => handlePageClick('about')} 
-              className="hover:text-blue-400 transition-colors cursor-pointer"
+          <div className="flex items-center gap-4 text-slate-400 text-xs">
+            <button
+              onClick={() => handlePageClick('about')}
+              className="hover:text-slate-200 transition-colors cursor-pointer"
             >
-              About Desk
+              Why Choose Us
             </button>
-            <span>•</span>
-            <button 
-              onClick={() => handlePageClick('work')} 
-              className="hover:text-blue-400 transition-colors cursor-pointer"
+            <span className="text-slate-700">•</span>
+            <button
+              onClick={() => handlePageClick('contact')}
+              className="hover:text-slate-200 transition-colors cursor-pointer"
             >
-              Study Guides
+              Consultation
             </button>
-            <span>•</span>
-            <button 
-              onClick={() => handlePageClick('contact')} 
-              className="hover:text-blue-400 transition-colors cursor-pointer"
+            <span className="text-slate-700">•</span>
+            <button
+              onClick={handleOpenSchema}
+              className="hover:text-emerald-400 transition-colors cursor-pointer inline-flex items-center gap-1 font-mono text-[11px]"
+              title="Inspect structured SEO data (Schema.org)"
             >
-              Sonipat Center
+              <RemixIcon name="ri-code-s-slash-line" className="text-xs" />
+              <span>JSON-LD</span>
             </button>
           </div>
         </div>
-
       </div>
 
+      {/* Minimal JSON-LD Schema Modal */}
+      {showSchemaModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden text-left">
+            <div className="p-4 border-b border-slate-800 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <RemixIcon name="ri-code-box-line" className="text-emerald-400 text-lg" />
+                <div>
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-white">Dynamic JSON-LD Schema</h3>
+                  <p className="text-[11px] text-slate-400">Structured data for JSR World Visas (Kundli, Sonipat & Melbourne)</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setShowSchemaModal(false)}
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              >
+                <RemixIcon name="ri-close-line" className="text-lg" />
+              </button>
+            </div>
+
+            <div className="p-4 flex-1 overflow-auto bg-slate-950 font-mono text-xs text-emerald-300">
+              <pre className="whitespace-pre-wrap break-all leading-relaxed">
+                {schemaText}
+              </pre>
+            </div>
+
+            <div className="p-3 border-t border-slate-800 flex items-center justify-between bg-slate-900 text-xs">
+              <span className="text-slate-400 text-[11px]">Injected in document &lt;head&gt;</span>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleCopySchema}
+                  className="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-colors cursor-pointer text-xs"
+                >
+                  {copied ? 'Copied' : 'Copy JSON'}
+                </button>
+                <button
+                  onClick={() => setShowSchemaModal(false)}
+                  className="px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300 hover:bg-slate-800 transition-colors cursor-pointer text-xs"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };

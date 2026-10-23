@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { COMPANY_CONFIG } from '../data/config';
-import { 
-  X, 
-  Send, 
-  CheckCircle2, 
-  GraduationCap, 
-  Sparkles, 
-  MessageSquare,
-  Phone
-} from 'lucide-react';
+import { RemixIcon } from './RemixIcon';
 
 interface QuickLeadPopupProps {
   isOpen: boolean;
@@ -83,13 +75,13 @@ export const QuickLeadPopup: React.FC<QuickLeadPopupProps> = ({
           className="absolute top-4 right-4 p-2 rounded-full text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors z-10"
           aria-label="Close form"
         >
-          <X className="w-5 h-5" />
+          <RemixIcon name="ri-close-line" className="text-xl" />
         </button>
 
         {isSubmitted ? (
           <div className="p-7 sm:p-8 text-center space-y-4">
             <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-8 h-8" />
+              <RemixIcon name="ri-checkbox-circle-fill" className="text-3xl" />
             </div>
 
             <div className="space-y-1">
@@ -106,7 +98,7 @@ export const QuickLeadPopup: React.FC<QuickLeadPopupProps> = ({
                 onClick={handleSendToWhatsApp}
                 className="w-full py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
-                <MessageSquare className="w-4 h-4" />
+                <RemixIcon name="ri-whatsapp-fill" className="text-base" />
                 <span>Chat Instantly on WhatsApp</span>
               </button>
 
@@ -122,7 +114,7 @@ export const QuickLeadPopup: React.FC<QuickLeadPopupProps> = ({
           <div className="p-6 sm:p-8 space-y-5">
             <div className="space-y-1">
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-wider">
-                <Sparkles className="w-3 h-3 text-amber-500" />
+                <RemixIcon name="ri-sparkling-fill" className="text-xs text-amber-500" />
                 <span>Model Town, Sonipat Desk</span>
               </div>
               <h3 className="font-heading font-extrabold text-xl sm:text-2xl text-slate-900">
@@ -212,7 +204,7 @@ export const QuickLeadPopup: React.FC<QuickLeadPopupProps> = ({
                 type="submit"
                 className="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer mt-2"
               >
-                <Send className="w-4 h-4" />
+                <RemixIcon name="ri-send-plane-fill" className="text-base" />
                 <span>Confirm Free Counseling Session</span>
               </button>
 
@@ -223,7 +215,7 @@ export const QuickLeadPopup: React.FC<QuickLeadPopupProps> = ({
                   rel="noopener noreferrer"
                   className="text-[11px] text-emerald-600 font-bold hover:underline inline-flex items-center gap-1"
                 >
-                  <MessageSquare className="w-3 h-3" />
+                  <RemixIcon name="ri-whatsapp-fill" className="text-sm" />
                   <span>Prefer WhatsApp? Chat directly with Counselor</span>
                 </a>
               </div>
